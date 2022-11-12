@@ -677,7 +677,8 @@ public class AutoComplete {
                 "    local positionals=\"\"\n" +
                 "%s" +
                 "    local IFS=$'\\n'\n" +
-                "    COMPREPLY=( $(compgen -W \"${commands// /$'\\n'}${IFS}${positionals}\" -- \"${curr_word}\") )\n" +
+                "    local candidates=\"${commands// /$'\\n'}${IFS}${positionals}\"\n" +
+                "    COMPREPLY=( $(compgen -W \"${candidates## }\" -- \"${curr_word}\") )\n" +
                 "  fi\n" +
                 "}\n";
 
